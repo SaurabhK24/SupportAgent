@@ -2,6 +2,22 @@ import { OpenAI } from 'openai';
 import { NextResponse } from 'next/server';
 
 
+/**
+ * 
+ * import FirecrawlApp, { ScrapeResponse } from '@mendable/firecrawl-js';
+
+ * if (!process.env.FIRECRAWL_API_KEY) {
+  throw new Error('Missing Firecrawl API Key');
+}
+
+const app = new FirecrawlApp({
+  apiKey: process.env.FIRECRAWL_API_KEY
+});
+ */
+
+// Call the testScrape function to execute the scrape test
+
+
 const SYSTEM_PROMPT = `You are a helpful AI assistant for Crustdata's API support. 
 You help users with technical questions about Crustdata's APIs.
 You have access to the API documentation and can provide specific examples.
@@ -30,7 +46,10 @@ export async function POST(req: Request) {
       ],
       temperature: 0.7,
     });
-
+    //console.log("About to run testScrape!")
+   // await testScrape();
+    //console.log("Ran testScrape!")
+    
     return NextResponse.json({
       content: completion.choices[0].message.content
     });
